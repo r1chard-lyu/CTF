@@ -1,0 +1,67 @@
+
+
+
+
+
+多個 victim
+log 
+> prepocessing ( Ｃluster  拿代表性的 IOC 去查 ）
+> 查的方法 （ huestic 、ＡＩ) 並比較差別
+-> Dashboard
+呈現 log 的 Distribution
+
+
+摘要，少一點前言，
+先描述需求 半段
+企業安裝 EDR NDR
+蒐集 ＬＯＧ
+處理
+查ＣＴＩ
+呈現在 Dashboard
+
+另外半段 怎麼做
+extraction.
+Clustr 才要去查，
+
+比對是否有相同來源跟路徑 輸出到 Dashboard
+
+
+預期成果
+Output 條列
+演算法
+雛型系統
+統計分析
+
+
+
+
+研究規劃 改成這個步驟
+
+畫兩個流程圖
+一個系統架構圖 左邊是 log ，
+系統有Preprocessing mudole、 sub IoC Extrion module、IOC Clustiong
+CTI Lookup Algoithm 兩格 hustic |AI 輸出 attack path ，pass output給 Statsitcs
+Statistics 找出 Common 的 Path 、Source 
+CTI algoithm
+
+
+系統外部有 CTI module
+
+一個是流程圖 log 進來後怎麼處裡，會有一個 looping ，進去 box  後 log 後，某個條件過後會查一次，統計分析，查完CTI 才會去更新（每天 or 每小時 ），
+
+
+需要4個Step
+
+
+研究規劃
+2022拿掉 只要寫2023
+Checkpoint 四個流程 四個items
+
+
+
+
+
+
+
+
+x

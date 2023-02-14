@@ -1,0 +1,29 @@
+import time
+from ipaddress import ip_address
+import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("8.8.8.8",80))
+ip_address=s.getsockname()[0]
+print(ip_address[11])
+
+
+'''
+#read /flag file
+f = open('/etc/hosts','r')
+f_string = f.read()
+
+#get flag as a char array
+FLAG = []
+for i in f_string:    
+    FLAG.append(i)
+
+
+for i in range(30,35):
+    if FLAG[32] == chr(i): 
+        
+        break
+    else:
+        time.sleep(1)  
+        continue
+'''

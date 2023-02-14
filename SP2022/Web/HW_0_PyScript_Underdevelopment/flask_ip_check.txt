@@ -1,0 +1,9 @@
+from urllib import request
+import time
+
+
+url_flask="http://172.26.0.3:5000"
+url_flask_response = request.urlopen(url_flask)
+
+url_flask_response.getcode()
+if url_flask_response.getcode() == 200: time.sleep(1)

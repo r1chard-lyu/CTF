@@ -1,0 +1,18 @@
+a = 1 // 1 ; b = '''
+
+// Include the fs module
+var fs = require('fs');
+ 
+// Open file demo.txt in read mode
+fs.open('/Users/yisinlyu/Desktop/flag.rtf', 'r', function (err, f) {
+    console.log(f.toString())
+    console.log('Saved!');
+});
+console.log('Javascript running here');
+
+/* '''
+
+file = open('/Users/yisinlyu/Desktop/flag.rtf','r')
+print(file.read())
+
+# */
