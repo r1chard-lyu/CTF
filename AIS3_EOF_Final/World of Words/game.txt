@@ -1,0 +1,156 @@
+let gameWindow = gameFrame.contentWindow
+let gameDocument = gameFrame.contentDocument
+let gameElement = gameDocument.querySelector('#game')
+window.send = send
+
+function send(msg) {
+    gameElement.dispatchEvent(new gameWindow.CustomEvent("send", { detail: msg }));
+}
+
+function init() {
+    gameWindow = gameFrame.contentWindow
+    gameDocument = gameFrame.contentDocument
+    gameElement = gameDocument.querySelector('#game')
+    gameWindow.addEventListener('keydown', async function(e){
+        console.log(e)
+        if(e.code == 'KeyD'){
+            send({
+                "type": "attack",
+                "data": {
+                    "facing": [1, 0],
+                }
+            })
+            await new Promise(r => setTimeout(r, 200));
+            console.log(123)
+        } // D
+        if(e.code == 'KeyA'){
+            send({
+                "type": "attack",
+                "data": {
+                    "facing": [-1, 0],
+                }
+            })
+            await new Promise(r => setTimeout(r, 200));
+        } // A
+        if(e.code == 'KeyS'){
+            send({
+                "type": "attack",
+                "data": {
+                    "facing": [0, 1],
+                }
+            })
+            await new Promise(r => setTimeout(r, 200));
+        } // S
+        if(e.code == 'KeyW'){
+            send({
+                "type": "attack",
+                "data": {
+                    "facing": [0, -1],
+                }
+            })
+            await new Promise(r => setTimeout(r, 200));
+        } // W
+        if(e.code == 'KeyU'){
+            send({
+                "type": "attack",
+                "data": {
+                    "facing": [1, 0],
+                }
+            })
+            await new Promise(r => setTimeout(r, 100));
+            send({
+                "type": "attack",
+                "data": {
+                    "facing": [-1, 0],
+                }
+            })
+            await new Promise(r => setTimeout(r, 100));
+            send({
+                "type": "attack",
+                "data": {
+                    "facing": [0, 1],
+                }
+            })
+            await new Promise(r => setTimeout(r, 100));
+            send({
+                "type": "attack",
+                "data": {
+                    "facing": [0, -1],
+                }
+            })
+            await new Promise(r => setTimeout(r, 100));
+        } // U, four direction
+        if(e.code == 'KeyY'){
+            send({
+                "type": "move",
+                "data": {
+                    "facing": [0, -1],
+                    "vec": [0, -1],
+                }
+            })
+            await new Promise(r => setTimeout(r, 200));
+        } // I
+        if(e.code == 'KeyG'){
+            send({
+                "type": "move",
+                "data": {
+                    "facing": [-1, 0],
+                    "vec": [-1, 0],
+                }
+            })
+            await new Promise(r => setTimeout(r, 200));
+        } // J
+        if(e.code == 'KeyH'){
+            send({
+                "type": "move",
+                "data": {
+                    "facing": [0, 1],
+                    "vec": [0, 1],
+                }
+            })
+            await new Promise(r => setTimeout(r, 200));
+        } // K
+        if(e.code == 'KeyJ'){
+            send({
+                "type": "move",
+                "data": {
+                    "facing": [1, 0],
+                    "vec": [1, 0],
+                }
+            })
+            await new Promise(r => setTimeout(r, 200));
+        } // L
+    }, false);
+}
+
+function attack() {
+    init()
+    send({
+        "type": "attack",
+        "data": {
+            "facing": [1, 0],
+        }
+    }) // D
+
+}
+
+function main() {
+    // create a fixed element attack, when pressed, call attack 1000 times
+    let button = document.createElement('button')
+    button.innerHTML = 'attack'
+    button.style.position = 'fixed'
+    button.style.top = '0'
+    button.style.left = '0'
+    button.style.background = 'red'
+    button.style.color = 'white'
+    /*button.addEventListener('click', () => {
+        for (let i = 0; i < 100; i++) {
+            attack()
+        }
+    })*/
+    document.body.appendChild(button)
+    console.log("OK")
+    init();
+    // add code
+}
+window.setTimeout(main, 1000)

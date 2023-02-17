@@ -1,0 +1,13 @@
+service nas 
+{
+    disable = no
+    type = UNLISTED
+    socket_type = stream
+    protocol = tcp
+    server = /home/nas/run.sh
+    user = nas
+    port = 8787
+    flags = REUSE
+    bind = 0.0.0.0
+    wait = no
+}

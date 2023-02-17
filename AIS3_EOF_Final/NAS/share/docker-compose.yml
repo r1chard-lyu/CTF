@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  nas:
+    cap_add:
+      - SYS_PTRACE
+    build: .
+    ports:
+      - 127.0.0.1:8787:8787/tcp
+    volumes:
+      - ./flag:/flag:ro
+      - ./nas:/home/nas/nas:ro
+      - ./nas_config:/tmp/nas_config:ro
+      
+      - ./xinetd:/etc/xinetd.d/nas:ro
+      - ./run.sh:/home/nas/run.sh:ro
+    

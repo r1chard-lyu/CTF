@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import socket
+
+
+HOST = f'10.12.1.1'
+PORT = 8787
+
+for teamid in range(1,20) :
+    HOST = f'10.12.{teamid}.1'
+    print(HOST)
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((HOST, PORT))
+
+    outdata = 'hello hacker'
+    print('send: ' + outdata)
+    s.send(outdata.encode())
+
+    indata = s.recv(1024)
+    print('recv: ' + indata.decode())
+
+    s.close()               
